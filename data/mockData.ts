@@ -2,11 +2,11 @@
 import { BlogPost, Category, Quote, CreatorProfile, Contributor, Menfess } from '../types/types';
 
 export const quotes: Quote[] = [
-  { text: "Hidup itu random, tapi outfit harus tetap on point.", author: "Unknown Gen Z", bgColor: "bg-gen-purple" },
-  { text: "Your anxiety is lying to you, bestie.", author: "Mental Health Daily", bgColor: "bg-gen-mint" },
-  { text: "Touch grass, drink water, code later.", author: "Senior Dev", bgColor: "bg-gen-blue" },
+  { text: "Hidup itu random, tapi outfit harus tetap on point.", author: "Unknown Gen Z", bgColor: "bg-purple-300" },
+  { text: "Your anxiety is lying to you, bestie.", author: "Mental Health Daily", bgColor: "bg-mint-300" },
+  { text: "Touch grass, drink water, code later.", author: "Senior Dev", bgColor: "bg-blue-300" },
   { text: "Do it for the plot.", author: "Life Motto", bgColor: "bg-gen-pink" },
-  { text: "Manifesting clear skin and bug-free code.", author: "Portorin", bgColor: "bg-gen-yellow" },
+  { text: "Manifesting clear skin and bug-free code.", author: "Portorin", bgColor: "bg-yellow-300" },
 ];
 
 export const creator: CreatorProfile = {
@@ -42,6 +42,7 @@ export const menfessData: Menfess[] = [
 export const blogPosts: BlogPost[] = [
   {
     id: "1",
+    slug: "quarter-life-crisis-valid-gak-sih",
     title: "Quarter Life Crisis: Valid Gak Sih?",
     excerpt: "Bingung arah hidup pas umur 20-an itu wajar banget. Yuk bedah kenapa kita semua ngerasa ketinggalan.",
     content: `
@@ -67,6 +68,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "2",
+    slug: "belajar-react-jangan-langsung-loncat-ke-nextjs",
     title: "Belajar React: Jangan Langsung Loncat ke Next.js!",
     excerpt: "Fundamental itu kunci. Jangan fomo pake framework meta kalo `useEffect` aja masih bikin infinite loop.",
     content: `
@@ -91,6 +93,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "3",
+    slug: "digital-detox-24-jam-tanpa-sosmed",
     title: "Digital Detox: 24 Jam Tanpa Sosmed",
     excerpt: "Gimana rasanya seharian gak scroll TikTok? Ternyata dunia nyata lebih HD daripada layar HP.",
     content: `
@@ -110,6 +113,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "4",
+    slug: "kenapa-kucing-adalah-bos-sebenarnya",
     title: "Kenapa Kucing Adalah Bos Sebenarnya",
     excerpt: "Analisis mendalam kenapa kita rela jadi babu buat makhluk berbulu yang judes ini.",
     content: `<p>Meow. Itu aja sih intinya. Kita semua diperbudak keimutan.</p>`,
@@ -123,6 +127,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: "5",
+    slug: "atomic-habits-versi-gen-z",
     title: "Atomic Habits: Versi Gen Z",
     excerpt: "Gak perlu perubahan besar. Cukup 1% tapi konsisten, kayak naikin rank Mobile Legends.",
     content: `<p>Mulai dari ngerapiin tempat tidur. Abis itu minum air. Kelar.</p>`,

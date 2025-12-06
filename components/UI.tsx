@@ -21,7 +21,7 @@ export const CategoryTag: React.FC<{ category: string; isActive?: boolean; onCli
 
 export const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => {
   return (
-    <Link href={`/blog/${post.id}`} className="group block h-full relative">
+    <Link href={`/blog/${post.slug}`} className="group block h-full relative">
       <div className="bg-white rounded-4xl p-4 border-2 border-gray-100 shadow-sm group-hover:border-black group-hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 h-full flex flex-col relative z-10">
         <div className="relative overflow-hidden rounded-3xl aspect-16/10 mb-5 border border-gray-100">
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors z-10"></div>
@@ -71,7 +71,7 @@ export const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 
 export const QuoteCard: React.FC<{ quote: Quote }> = ({ quote }) => {
   return (
-    <div className={`rounded-[2.5rem] p-8 md:p-12 ${quote.bgColor} relative overflow-hidden transition-all duration-500 group border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1`}>
+    <div className={`rounded-[2.5rem] p-8 md:p-12 ${quote.bgColor}  relative overflow-hidden transition-all duration-500 group border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1`}>
       {/* Decorative pattern */}
       <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
         <QuoteIcon size={120} />

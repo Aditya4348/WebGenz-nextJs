@@ -1,23 +1,56 @@
 @import "tailwindcss";
 
-/* 
-  This file adapts a base theme to match the project's style.
-  It uses CSS variables for easy management of colors and fonts.
-*/
+/* --- Custom Theme --- */
+@theme {
+  /* Font family */
+  --font-sans: Inter, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
 
+  /* Custom colors */
+  --color-gen-purple: #E9D5FF;
+  --color-gen-mint: #D9F99D;
+  --color-gen-pink: #FECDD3;
+  --color-gen-blue: #BAE6FD;
+  --color-gen-yellow: #FDE047;
+  --color-gen-dark: #1F2937;
+  --color-gen-offwhite: #FAFAFA;
+
+  /* Border radius */
+  --radius-4xl: 2.5rem;
+  --radius-5xl: 3rem;
+
+  /* Animations */
+  --animate-blob: blob 7s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+
+  /* Keyframes */
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+  }
+
+}
+
+/* --- Base Theme using CSS Variables --- */
 :root {
-  /* Light Mode Defaults */
-  --background: #FAFAFA; /* from gen-offwhite */
-  --foreground: #1F2937; /* from gen-dark */
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'Space Grotesk', monospace;
+  --background: var(--color-gen-offwhite);
+  --foreground: var(--color-gen-dark);
 }
 
 @media (prefers-color-scheme: dark) {
-  /* Dark Mode Overrides */
   :root {
-    --foreground: #1F2937; /* from gen-dark */
-    --background: #FAFAFA; /* from gen-offwhite */
+    --foreground: var(--color-gen-dark);
+    --background: var(--color-gen-offwhite);
   }
 }
 
@@ -26,3 +59,17 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+}
+
