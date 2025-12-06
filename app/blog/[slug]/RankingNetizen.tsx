@@ -180,9 +180,6 @@ export default function RangkingNetizen({user, post, relatedPosts } : {user: any
         <p className="text-sm text-gray-600 mb-4">
           "Nulis artikel random di sela-sela overthinking."
         </p>
-        <button className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-sm">
-          Follow
-        </button>
       </div>
 
       {/* Related Posts Sidebar */}
