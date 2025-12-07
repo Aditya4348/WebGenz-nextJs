@@ -71,7 +71,7 @@ export const BlogCard: React.FC<{ post: BlogPost }> = ({ post }) => {
 
 export const QuoteCard: React.FC<{ quote: Quote }> = ({ quote }) => {
   return (
-    <div className={`rounded-[2.5rem] p-8 md:p-12 ${quote.bgColor}  relative overflow-hidden transition-all duration-500 group border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1`}>
+    <div className={`rounded-4xl p-8 md:p-12 ${quote.bgColor}  relative overflow-hidden transition-all duration-500 group border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1`}>
       {/* Decorative pattern */}
       <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
         <QuoteIcon size={120} />

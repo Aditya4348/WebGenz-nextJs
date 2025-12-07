@@ -1,8 +1,45 @@
-""
-
 import React from 'react';
 import { creator } from '@/data/mockData';
 import { Instagram, Twitter, Coffee, Code, Music, Gamepad2, MapPin, Quote as QuoteIcon } from 'lucide-react';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `The Creator | ${creator.name} - Portorin`,
+  description: `Kenalan dengan ${creator.name}, Chief Vibe Officer, Frontend Developer, dan pemikir kreatif di balik Portorin. Temukan cerita, vibe, dan passion kreatornya!`,
+  keywords: [
+    "creator",
+    "profil kreator",
+    "about portorin",
+    "frontend developer",
+    "Gen Z",
+    "alex kai",
+    "cerita kreator",
+    "team portorin",
+  ],
+  metadataBase: new URL("https://yourdomain.com"),
+  openGraph: {
+    title: `The Creator: ${creator.name} | Portorin`,
+    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik Portorin. Temukan cerita dan passion kreatornya.`,
+    url: "/creator",
+    images: [
+      {
+        url: creator.image,
+        width: 400,
+        height: 400,
+        alt: `Foto profil ${creator.name}`,
+      },
+    ],
+    type: "profile",
+  },
+  twitter: {
+    card: "summary",
+    title: `The Creator: ${creator.name} | Portorin`,
+    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik Portorin. Temukan cerita dan passion kreatornya.`,
+    images: [creator.image],
+  },
+  alternates: { canonical: "/creator" },
+};
+
 
 const Creator: React.FC = () => {
   return (

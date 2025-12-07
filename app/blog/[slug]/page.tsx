@@ -1,9 +1,42 @@
 import { ButtonBack } from "@/components/buttonBack";
 import { blogPosts } from "@/data/mockData";
 import BlogContent from "./BlogContent";
-import { use } from "react";
+import { use, Suspense } from "react";
 import CommentSection from "./ComenntSection";
 import RangkingNetizen from "./RankingNetizen";
+import { Metadata } from "next";
+
+type Props = { params: { slug: string } };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((post) => post.slug === slug);
+
+  if (!post) {
+    return {
+      title: "Artikel Tidak Ditemukan",
+      description: "Halaman blog yang Anda cari tidak tersedia.",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage],
+      url: `https://yourdomain.com/blog/${slug}`,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage],
+    },
+  };
+}
 
 export default function BlogDetailPage({
   params,
@@ -12,7 +45,6 @@ export default function BlogDetailPage({
 }) {
   const { slug } = use(params);
   const post = blogPosts.find((post) => post.slug === slug);
-  const comments = post?.comments || [];
 
 
 
@@ -43,3 +75,4 @@ export default function BlogDetailPage({
     </main>
   );
 }
+

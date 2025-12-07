@@ -1,8 +1,5 @@
-"use client";
-
-import React, { useMemo, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import {
   Sparkles,
@@ -27,6 +24,51 @@ import {
 import { quotes, blogPosts, menfessData } from "../data/mockData";
 import { BlogCard, QuoteCard, SectionHeader } from "../components/UI";
 import { useAuth } from "../Context/AuthContext";
+import Quote from "./Quote";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+  description:
+    "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
+  keywords: [
+    "Portorin",
+    "Gen Z",
+    "komunitas online",
+    "artikel teknologi",
+    "belajar coding",
+    "pengembangan diri",
+    "menfess",
+    "gaya hidup",
+    "opini random",
+  ],
+  metadataBase: new URL("https://yourdomain.com"), // base URL untuk canonical & OG
+  openGraph: {
+    title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+    description:
+      "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
+    url: "/",
+    images: [
+      {
+        url: "https://picsum.photos/seed/home/1200/630", // Gambar yang berbeda untuk home
+        width: 1200,
+        height: 630,
+        alt: "Portorin - Digital Playground untuk Gen Z",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+    description: "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
+    images: ["https://picsum.photos/seed/home/1200/630"],
+  },
+  alternates: {
+    canonical: "/", // URL kanonis untuk halaman utama
+  },
+};
 
 const MarqueeContent: React.FC = () => (
   <>
@@ -53,41 +95,13 @@ const Marquee: React.FC = () => (
     <div className="flex w-max animate-marquee gap-8">
       <MarqueeContent />
       <MarqueeContent />
+      <MarqueeContent />
+      <MarqueeContent />
     </div>
   </div>
 );
 
 const Home: React.FC = () => {
-  const { user } = useAuth();
-  const router = useRouter();
-
-  const [quoteText, setQuoteText] = useState("");
-  const [quoteTagline, setQuoteTagline] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const randomQuote = useMemo(() => {
-    return quotes[Math.floor(Math.random() * quotes.length)];
-  }, []);
-
-  const handleSubmitQuote = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Auth Check
-    if (!user) {
-      router.push("/login");
-      return;
-    }
-
-    if (!quoteText.trim() || !quoteTagline.trim()) return;
-
-    setSubmitted(true);
-    // Simulate submission delay
-    setTimeout(() => {
-      setSubmitted(false);
-      setQuoteText("");
-      setQuoteTagline("");
-    }, 3000);
-  };
 
   const latestPosts = blogPosts.slice(0, 3);
   const trendingPosts = blogPosts
@@ -129,6 +143,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="space-y-24 pb-12 ">
+       
       {/* Hero Section */}
       <section className="relative pt-8 md:pt-16 pb-8 flex flex-col items-center text-center px-4">
         {/* Floating Elements/Stickers */}
@@ -190,102 +205,7 @@ const Home: React.FC = () => {
       <Marquee />
 
       {/* Quote Widget */}
-      <section className="max-w-4xl mx-auto px-4 flex flex-col items-center">
-        <QuoteCard quote={randomQuote} />
-
-        {/* User Submission Box */}
-        {/* User Submission Box */}
-        <div className="mt-8 w-full max-w-3xl">
-          <div
-            className={`bg-white rounded-4xl p-3 border-2 shadow-sm transition-all focus-within:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] ${
-              !user
-                ? "border-gray-200"
-                : "border-gray-300 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black"
-            }`}
-          >
-            {!submitted ? (
-              <form
-                onSubmit={handleSubmitQuote}
-                className="flex flex-col md:flex-row gap-3"
-              >
-                {/* Icon */}
-                <div className="hidden md:flex w-12 h-12 bg-gray-50 rounded-full items-center justify-center shrink-0 self-start mt-1">
-                  <MessageSquarePlus size={20} className="text-gray-400" />
-                </div>
-
-                {/* Input 1: Quote Text */}
-                <div className="grow">
-                  <input
-                    type="text"
-                    className="w-full bg-transparent border-none focus:outline-none font-bold text-lg placeholder:text-gray-300 h-14 text-gray-800"
-                    placeholder="Ketik quote bijak lo di sini..."
-                    value={quoteText}
-                    onChange={(e) => setQuoteText(e.target.value)}
-                    maxLength={120}
-                  />
-                </div>
-
-                {/* Divider for Desktop */}
-                <div className="hidden md:block w-px bg-gray-100 my-2"></div>
-
-                {/* Input 2: Tagline */}
-                <div className="w-full md:w-48 bg-gray-50 md:bg-transparent rounded-xl md:rounded-none px-4 md:px-0 flex items-center">
-                  <Hash
-                    size={14}
-                    className="text-gray-400 mr-1 shrink-0"
-                  />
-                  <input
-                    type="text"
-                    className="w-full bg-transparent border-none focus:outline-none font-bold text-sm placeholder:text-gray-300 h-12 text-purple-600"
-                    placeholder="Tagline (ex: Life Motto)"
-                    value={quoteTagline}
-                    onChange={(e) => setQuoteTagline(e.target.value)}
-                    maxLength={30}
-                  />
-                </div>
-
-                {/* Button */}
-                <button
-                  type="submit"
-                  className={`px-6 py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2 shrink-0 transition-all ${
-                    !user
-                      ? "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                      : "bg-black text-white hover:scale-105 active:scale-95"
-                  }`}
-                >
-                  {!user ? (
-                    <>
-                      Login Dulu <Lock size={14} />
-                    </>
-                  ) : (
-                    <>
-                      Kirim <Send size={14} />
-                    </>
-                  )}
-                </button>
-              </form>
-            ) : (
-              <div className="flex items-center justify-center gap-2 h-14 text-green-600 font-bold animate-in fade-in zoom-in duration-300">
-                <Sparkles size={18} /> Mantap! Quote lo lagi direview admin.
-              </div>
-            )}
-          </div>
-
-          <div className="flex justify-between items-center mt-3 px-2">
-            <p className="text-xs text-gray-400 font-bold uppercase tracking-wider opacity-60">
-              *Quote terbaik bakal muncul di Daily Wisdom
-            </p>
-            {!user && (
-              <Link
-                href="/login"
-                className="text-xs font-bold text-purple-600 hover:underline"
-              >
-                *Wajib login buat kirim
-              </Link>
-            )}
-          </div>
-        </div>
-      </section>
+      <Quote />
 
       {/* Latest Articles */}
       <section id="featured" className="max-w-7xl mx-auto px-4">
@@ -388,7 +308,7 @@ const Home: React.FC = () => {
 
       {/* Mini Apps Preview Section */}
       <section className="max-w-7xl mx-auto px-4">
-        <div className="bg-black rounded-[2.5rem] p-8 md:p-12 text-white overflow-hidden relative">
+        <div className="bg-black rounded-4xl p-8 md:p-12 text-white overflow-hidden relative">
           {/* Background Decoration */}
           <div
             className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none"
@@ -445,7 +365,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* NEW: Join Squad CTA Section */}
-      <section className="max-w-7xl mx-auto px-4 relative overflow-hidden rounded-[3rem] bg-gen-yellow p-8 md:p-16 text-black border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <section className="max-w-7xl mx-auto px-4 relative overflow-hidden rounded-5xl bg-gen-yellow p-8 md:p-16 text-black border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">
             <div className="inline-block bg-black text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 rotate-1">
@@ -491,7 +411,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Trending Section - Bento Style */}
-      <section className="max-w-7xl mx-auto px-4 bg-black rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden">
+      <section className="max-w-7xl mx-auto px-4 bg-black rounded-5xl p-8 md:p-16 text-white relative overflow-hidden">
         {/* Background blobs */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-900/40 rounded-full blur-[100px]"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-900/40 rounded-full blur-[100px]"></div>
@@ -509,8 +429,8 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Large Featured */}
             <Link
-              href={`/blog/${trendingPosts[0].id}`}
-              className="group relative bg-gray-900 rounded-[2.5rem] p-1 border border-white/10 hover:border-white/30 transition-all overflow-hidden h-[400px]"
+              href={`/blog/${trendingPosts[0].slug}`}
+              className="group relative bg-gray-900 rounded-4xl p-1 border border-white/10 hover:border-white/30 transition-all overflow-hidden h-[400px]"
             >
               <Image
                 src={trendingPosts[0].coverImage}
@@ -538,8 +458,8 @@ const Home: React.FC = () => {
               {trendingPosts.slice(1).map((post) => (
                 <Link
                   key={post.id}
-                  href={`/blog/${post.id}`}
-                  className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-[2.5rem] p-8 flex flex-col justify-center transition-all group"
+                  href={`/blog/${post.slug}`}
+                  className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 rounded-4xl p-8 flex flex-col justify-center transition-all group"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-4xl font-display font-bold text-white/20">
@@ -555,7 +475,7 @@ const Home: React.FC = () => {
               ))}
 
               {/* Community Box (Replaced Newsletter) */}
-              <div className="flex-1 bg-linear-to-br from-gen-purple to-purple-600 rounded-[2.5rem] p-8 flex flex-col justify-center items-center text-center text-black">
+              <div className="flex-1 bg-linear-to-br from-gen-purple to-purple-600 rounded-4xl p-8 flex flex-col justify-center items-center text-center text-black">
                 <Zap size={32} className="mb-4 text-white" />
                 <h4 className="font-bold text-xl text-white mb-2">
                   Join The Squad!

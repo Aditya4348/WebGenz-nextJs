@@ -11,6 +11,47 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { contributors } from "@/data/mockData";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contributor & Open Submission | Portorin",
+  description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z! Open submission sekarang.",
+  keywords: [
+    "contributor",
+    "open submission",
+    "submit artikel",
+    "Portorin",
+    "komunitas Gen Z",
+    "tulis di Portorin",
+    "guest post",
+    "curhatan kreatif",
+    "tutorial Gen Z"
+  ],
+  metadataBase: new URL("https://yourdomain.com"),
+  openGraph: {
+    title: "Contributor & Open Submission | Portorin",
+    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z!",
+    url: "/contributor",
+    images: [
+      {
+        url: "https://picsum.photos/seed/contributor/1200/630",
+        width: 1200,
+        height: 630,
+        alt: "Contributor Portorin",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contributor & Open Submission | Portorin",
+    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z!",
+    images: ["https://picsum.photos/seed/contributor/1200/630"],
+  },
+  alternates: {
+    canonical: "/contributor",
+  },
+};
 
 const Contributor: React.FC = () => {
   return (
