@@ -2,12 +2,12 @@ import MiniAppsLayout from "./MiniAppsLayout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mini Apps & Fun Tools | Portorin",
-  description: "Eksplor mini apps unik dari Portorin: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya untuk hiburan sekaligus produktifitas ringan.",
+  title: "Mini Apps & Fun Tools | VibeHub",
+  description: "Eksplor mini apps unik dari VibeHub: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya untuk hiburan sekaligus produktifitas ringan.",
   keywords: [
     "mini apps",
     "fun tools",
-    "Portorin",
+    "VibeHub",
     "generator online",
     "kalkulator lucu",
     "mood checker",
@@ -18,23 +18,23 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://yourdomain.com"),
   openGraph: {
-    title: "Mini Apps & Fun Tools | Portorin",
-    description: "Eksplor mini apps unik dari Portorin: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya.",
+    title: "Mini Apps & Fun Tools | VibeHub",
+    description: "Eksplor mini apps unik dari VibeHub: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya.",
     url: "/miniapps",
     images: [
       {
         url: "https://picsum.photos/seed/miniapps/1200/630",
         width: 1200,
         height: 630,
-        alt: "Mini Apps Portorin",
+        alt: "Mini Apps VibeHub",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mini Apps & Fun Tools | Portorin",
-    description: "Eksplor mini apps unik dari Portorin: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya.",
+    title: "Mini Apps & Fun Tools | VibeHub",
+    description: "Eksplor mini apps unik dari VibeHub: cek mood, delulu calculator, inspirasi harian, dan tools gabut lainnya.",
     images: ["https://picsum.photos/seed/miniapps/1200/630"],
   },
   alternates: {

@@ -95,7 +95,7 @@ const UserProfile: React.FC = () => {
                <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
                   <Sparkles size={16} className="text-gen-yellow" />
                </div>
-               <span className="font-display font-bold text-lg tracking-tight">PORTORIN<span className="text-purple-600">.ID</span></span>
+               <span className="font-display font-bold text-lg tracking-tight">VibeHub<span className="text-purple-600">.ID</span></span>
             </div>
             <div className="bg-black text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-gray-800">
                Official Member

@@ -4,22 +4,22 @@ import { Instagram, Twitter, Coffee, Code, Music, Gamepad2, MapPin, Quote as Quo
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `The Creator | ${creator.name} - Portorin`,
-  description: `Kenalan dengan ${creator.name}, Chief Vibe Officer, Frontend Developer, dan pemikir kreatif di balik Portorin. Temukan cerita, vibe, dan passion kreatornya!`,
+  title: `The Creator | ${creator.name} - VibeHub`,
+  description: `Kenalan dengan ${creator.name}, Chief Vibe Officer, Frontend Developer, dan pemikir kreatif di balik VibeHub. Temukan cerita, vibe, dan passion kreatornya!`,
   keywords: [
     "creator",
     "profil kreator",
-    "about portorin",
+    "about VibeHub",
     "frontend developer",
     "Gen Z",
     "alex kai",
     "cerita kreator",
-    "team portorin",
+    "team VibeHub",
   ],
   metadataBase: new URL("https://yourdomain.com"),
   openGraph: {
-    title: `The Creator: ${creator.name} | Portorin`,
-    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik Portorin. Temukan cerita dan passion kreatornya.`,
+    title: `The Creator: ${creator.name} | VibeHub`,
+    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik VibeHub. Temukan cerita dan passion kreatornya.`,
     url: "/creator",
     images: [
       {
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: `The Creator: ${creator.name} | Portorin`,
-    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik Portorin. Temukan cerita dan passion kreatornya.`,
+    title: `The Creator: ${creator.name} | VibeHub`,
+    description: `Kenalan dengan ${creator.name}, Chief Vibe Officer dan Frontend Developer di balik VibeHub. Temukan cerita dan passion kreatornya.`,
     images: [creator.image],
   },
   alternates: { canonical: "/creator" },
@@ -72,7 +72,7 @@ const Creator: React.FC = () => {
              </div>
              <div className="text-center">
                  <div className="font-bold text-lg">Instagram</div>
-                 <div className="text-white/50 text-sm">@portorin.id</div>
+                 <div className="text-white/50 text-sm">@VibeHub.id</div>
              </div>
         </div>
 

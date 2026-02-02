@@ -5,40 +5,40 @@ import MenfessWall from './MenfessWall';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Menfess & Confession Wall | Tembok Curhat Portorin",
+  title: "Menfess & Confession Wall | Tembok Curhat VibeHub",
   description:
-    "Tulis pesan rahasia atau curhat anonim di Tembok Menfess Portorin. Kirim ke crush, teman, atau diri sendiri. 100% anonim untuk komunitas Gen Z.",
+    "Tulis pesan rahasia atau curhat anonim di Tembok Menfess VibeHub. Kirim ke crush, teman, atau diri sendiri. 100% anonim untuk komunitas Gen Z.",
   keywords: [
     "menfess",
     "confession wall",
     "pesan anonim",
     "curhat online",
     "komunitas Gen Z",
-    "Portorin menfess",
+    "VibeHub menfess",
     "curhat rahasia",
     "tembok curhat"
   ],
   metadataBase: new URL("https://yourdomain.com"),
   openGraph: {
-    title: "Menfess & Confession Wall | Tembok Curhat Portorin",
+    title: "Menfess & Confession Wall | Tembok Curhat VibeHub",
     description:
-      "Tulis pesan rahasia atau curhat anonim di Tembok Menfess Portorin. Kirim ke crush, teman, atau diri sendiri. 100% anonim.",
+      "Tulis pesan rahasia atau curhat anonim di Tembok Menfess VibeHub. Kirim ke crush, teman, atau diri sendiri. 100% anonim.",
     url: "/menfess",
     images: [
       {
         url: "https://picsum.photos/seed/menfess/1200/630",
         width: 1200,
         height: 630,
-        alt: "Tembok Menfess Portorin",
+        alt: "Tembok Menfess VibeHub",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Menfess & Confession Wall | Tembok Curhat Portorin",
+    title: "Menfess & Confession Wall | Tembok Curhat VibeHub",
     description:
-      "Tulis pesan rahasia atau curhat anonim di Tembok Menfess Portorin. Kirim ke crush, teman, atau diri sendiri. 100% anonim.",
+      "Tulis pesan rahasia atau curhat anonim di Tembok Menfess VibeHub. Kirim ke crush, teman, atau diri sendiri. 100% anonim.",
     images: ["https://picsum.photos/seed/menfess/1200/630"],
   },
   alternates: {

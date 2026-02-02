@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // Check localStorage on mount to persist login
   useEffect(() => {
-    const storedUser = localStorage.getItem('portorin_user');
+    const storedUser = localStorage.getItem('VibeHub_user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -38,31 +38,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const login = (email: string) => {
     const mockUser: User = {
       id: 'user_123',
-      name: email === 'admin@portorin.com' ? 'Mimin Kece' : 'Portorin Squad',
+      name: email === 'admin@VibeHub.com' ? 'Mimin Kece' : 'VibeHub Squad',
       email: email,
-      avatar: email === 'admin@portorin.com' 
+      avatar: email === 'admin@VibeHub.com' 
         ? 'https://picsum.photos/seed/admin/200/200' 
         : `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-      role: email === 'admin@portorin.com' ? 'admin' : 'user',
+      role: email === 'admin@VibeHub.com' ? 'admin' : 'user',
       quote: "Hidup itu random, yang penting outfit cakep.",
       xp: 0,
       badges: [],
     };
 
     setUser(mockUser);
-    localStorage.setItem('portorin_user', JSON.stringify(mockUser));
+    localStorage.setItem('VibeHub_user', JSON.stringify(mockUser));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('portorin_user');
+    localStorage.removeItem('VibeHub_user');
   };
 
   const updateUser = (data: Partial<User>) => {
     if (user) {
       const updatedUser = { ...user, ...data };
       setUser(updatedUser);
-      localStorage.setItem('portorin_user', JSON.stringify(updatedUser));
+      localStorage.setItem('VibeHub_user', JSON.stringify(updatedUser));
     }
   };
 

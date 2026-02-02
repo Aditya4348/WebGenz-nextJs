@@ -36,7 +36,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitl
         </div>
 
         <div className="mt-8 text-center text-xs text-gray-400 font-medium">
-          &copy; {new Date().getFullYear()} Portorin Media. No cookies, just vibes.
+          &copy; {new Date().getFullYear()} VibeHub Media. No cookies, just vibes.
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children, title, subtitl
         {/* Floating Content */}
         <div className="relative z-10 text-center text-white max-w-lg">
             <div className="mb-8 flex justify-center">
-                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-[2.5rem] border border-white/20 shadow-2xl rotate-3 hover:rotate-6 transition-transform duration-500">
+                 <div className="bg-white/10 backdrop-blur-md p-6 rounded-4xl border border-white/20 shadow-2xl rotate-3 hover:rotate-6 transition-transform duration-500">
                     <Zap size={80} className="text-gen-yellow fill-gen-yellow" />
                  </div>
             </div>

@@ -129,7 +129,7 @@ export default function CommentSection({ post }: { post: BlogPost }) {
   return (
     <section>
       {/* --- COMMENTS SECTION --- */}
-      <div className="mt-16 pt-12 border-t border-gray-100" id="comments">
+      <div className=" sm:mt-16 pt-12 border-t border-gray-100" id="comments">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <h3 className="font-display font-bold text-2xl">Diskusi Netizen</h3>

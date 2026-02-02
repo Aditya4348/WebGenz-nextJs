@@ -3,11 +3,11 @@ import { blogPosts } from "@/data/mockData";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog Portorin – Tips, Tutorial & Artikel Random untuk Gen Z",
+  title: "Blog VibeHub – Tips, Tutorial & Artikel Random untuk Gen Z",
   description:
-    "Jelajahi kumpulan artikel Portorin tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
+    "Jelajahi kumpulan artikel VibeHub tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
   keywords: [
-    "blog portorin",
+    "blog VibeHub",
     "artikel teknologi",
     "tips coding",
     "pengembangan diri",
@@ -19,25 +19,25 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://yourdomain.com"), // base URL untuk canonical & OG
   openGraph: {
-    title: "Blog Portorin – Tips, Tutorial & Artikel Random untuk Gen Z",
+    title: "Blog VibeHub – Tips, Tutorial & Artikel Random untuk Gen Z",
     description:
-      "Jelajahi kumpulan artikel Portorin tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
+      "Jelajahi kumpulan artikel VibeHub tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
     url: "/blog",
     images: [
       {
         url: "https://picsum.photos/seed/blog/1200/630",
         width: 1200,
         height: 630,
-        alt: "Portorin Blog",
+        alt: "VibeHub Blog",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog Portorin – Tips, Tutorial & Artikel Random untuk Gen Z",
+    title: "Blog VibeHub – Tips, Tutorial & Artikel Random untuk Gen Z",
     description:
-      "Jelajahi kumpulan artikel Portorin tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
+      "Jelajahi kumpulan artikel VibeHub tentang teknologi, gaya hidup, pengembangan diri, dan hal-hal random yang menarik untuk Gen Z.",
     images: ["https://picsum.photos/seed/blog/1200/630"],
   },
   alternates: {

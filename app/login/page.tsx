@@ -25,7 +25,7 @@ const Login: React.FC = () => {
   };
 
   const fillDummy = () => {
-    setEmail('admin@portorin.com');
+    setEmail('admin@VibeHub.com');
   };
 
   return (
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
         <Info className="text-yellow-600 shrink-0 mt-0.5" size={18} />
         <div className="grow">
           <p className="text-xs font-bold text-yellow-800 uppercase tracking-wider mb-1">Akun Dummy (Klik buat Auto-fill)</p>
-          <p className="text-sm text-yellow-900">Email: <span className="font-mono font-bold">admin@portorin.com</span></p>
+          <p className="text-sm text-yellow-900">Email: <span className="font-mono font-bold">admin@VibeHub.com</span></p>
           <p className="text-sm text-yellow-900">Pass: <span className="font-mono font-bold">bebas aja</span></p>
         </div>
         <Copy size={16} className="text-yellow-400 group-hover:text-yellow-600" />

@@ -14,38 +14,38 @@ import { contributors } from "@/data/mockData";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contributor & Open Submission | Portorin",
-  description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z! Open submission sekarang.",
+  title: "Contributor & Open Submission | VibeHub",
+  description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke VibeHub dan jadi bagian dari komunitas kreatif Gen Z! Open submission sekarang.",
   keywords: [
     "contributor",
     "open submission",
     "submit artikel",
-    "Portorin",
+    "VibeHub",
     "komunitas Gen Z",
-    "tulis di Portorin",
+    "tulis di VibeHub",
     "guest post",
     "curhatan kreatif",
     "tutorial Gen Z"
   ],
   metadataBase: new URL("https://yourdomain.com"),
   openGraph: {
-    title: "Contributor & Open Submission | Portorin",
-    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z!",
+    title: "Contributor & Open Submission | VibeHub",
+    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke VibeHub dan jadi bagian dari komunitas kreatif Gen Z!",
     url: "/contributor",
     images: [
       {
         url: "https://picsum.photos/seed/contributor/1200/630",
         width: 1200,
         height: 630,
-        alt: "Contributor Portorin",
+        alt: "Contributor VibeHub",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contributor & Open Submission | Portorin",
-    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke Portorin dan jadi bagian dari komunitas kreatif Gen Z!",
+    title: "Contributor & Open Submission | VibeHub",
+    description: "Punya opini, tutorial, atau curhatan unik? Kirim tulisan lo ke VibeHub dan jadi bagian dari komunitas kreatif Gen Z!",
     images: ["https://picsum.photos/seed/contributor/1200/630"],
   },
   alternates: {
@@ -69,7 +69,7 @@ const Contributor: React.FC = () => {
         </h1>
         <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
           Punya opini unpopular? Tutorial coding yang gak bikin pusing? Atau
-          curhatan quarter life crisis? Kirim tulisan lo ke Portorin.
+          curhatan quarter life crisis? Kirim tulisan lo ke VibeHub.
         </p>
 
         <Link

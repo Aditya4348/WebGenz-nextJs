@@ -29,11 +29,11 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+  title: "VibeHub – Tempat Random Tapi Bermakna untuk Gen Z",
   description:
     "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
   keywords: [
-    "Portorin",
+    "VibeHub",
     "Gen Z",
     "komunitas online",
     "artikel teknologi",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://yourdomain.com"), // base URL untuk canonical & OG
   openGraph: {
-    title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+    title: "VibeHub – Tempat Random Tapi Bermakna untuk Gen Z",
     description:
       "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
     url: "/",
@@ -54,14 +54,14 @@ export const metadata: Metadata = {
         url: "https://picsum.photos/seed/home/1200/630", // Gambar yang berbeda untuk home
         width: 1200,
         height: 630,
-        alt: "Portorin - Digital Playground untuk Gen Z",
+        alt: "VibeHub - Digital Playground untuk Gen Z",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portorin – Tempat Random Tapi Bermakna untuk Gen Z",
+    title: "VibeHub – Tempat Random Tapi Bermakna untuk Gen Z",
     description: "Digital playground buat kamu yang butuh asupan insight, tutorial coding, atau sekedar validasi kalau hidup itu emang chaos.",
     images: ["https://picsum.photos/seed/home/1200/630"],
   },
@@ -161,7 +161,7 @@ const Home: React.FC = () => {
         <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white border-2 border-gray-100 shadow-sm mb-8 animate-pulse">
           <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-ping"></span>
           <span className="text-xs font-bold uppercase tracking-wider text-gray-600">
-            Portorin v2.0 Live
+            VibeHub v2.0 Live
           </span>
         </div>
 

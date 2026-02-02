@@ -3,16 +3,16 @@ import { Bookmark, Share2 } from "lucide-react";
 
 export default function BlogContent({ post }: { post: BlogPost }) {
   return (
-    <article>
+    <article className="sm:px-6 lg:px-0 sm:max-w-6xl max-w-7xl mx-auto">
       {/* Article Header */}
-      <header className="mb-10 text-center lg:text-left">
+      <header className="sm:mb-10 mb-4 text-center lg:text-left">
         <div className="inline-block px-3 py-1 bg-gen-purple/30 text-purple-900 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
           {post.category}
         </div>
-        <h1 className="font-display font-bold text-3xl md:text-5xl leading-tight mb-6">
+        <h1 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
           {post.title}
         </h1>
-        <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 border-b border-gray-100 pb-8">
+        <div className="flex  items-center justify-center lg:justify-start gap-3 sm:gap-6 text-sm text-gray-500 border-b border-gray-100 pb-8">
           <div className="flex items-center gap-2">
             <img
               src={post.author.avatar}
@@ -27,7 +27,7 @@ export default function BlogContent({ post }: { post: BlogPost }) {
       </header>
 
       {/* Cover Image */}
-      <div className="w-full aspect-video md:aspect-21/9 overflow-hidden rounded-4xl mb-12 shadow-lg">
+      <div className="w-full aspect-square sm:aspect-21/9 overflow-hidden rounded-4xl mb-12 shadow-lg">
         <img
           src={post.coverImage}
           alt={post.title}
@@ -37,8 +37,8 @@ export default function BlogContent({ post }: { post: BlogPost }) {
 
       {/* Content Area */}
       <div className="">
-        <div className="flex justify-between items-center mb-8">
-          <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 sm:gap-2">
+          <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
@@ -59,7 +59,7 @@ export default function BlogContent({ post }: { post: BlogPost }) {
         </div>
 
         <article
-          className="prose prose-lg prose-headings:font-display prose-headings:font-bold prose-a:text-purple-600 prose-img:rounded-2xl text-gray-700 leading-relaxed max-w-none"
+          className="prose prose-sm sm:prose lg:prose-lg prose-headings:font-display prose-headings:font-bold prose-a:text-purple-600 prose-img:rounded-2xl text-gray-700 leading-relaxed max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </div>

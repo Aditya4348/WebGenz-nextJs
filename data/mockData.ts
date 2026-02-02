@@ -6,21 +6,21 @@ export const quotes: Quote[] = [
   { text: "Your anxiety is lying to you, bestie.", author: "Mental Health Daily", bgColor: "bg-mint-300" },
   { text: "Touch grass, drink water, code later.", author: "Senior Dev", bgColor: "bg-blue-300" },
   { text: "Do it for the plot.", author: "Life Motto", bgColor: "bg-gen-pink" },
-  { text: "Manifesting clear skin and bug-free code.", author: "Portorin", bgColor: "bg-yellow-300" },
+  { text: "Manifesting clear skin and bug-free code.", author: "VibeHub", bgColor: "bg-yellow-300" },
 ];
 
 export const creator: CreatorProfile = {
-  name: "Alex 'Portorin' Kai",
+  name: "Alex 'VibeHub' Kai",
   role: "Chief Vibe Officer & Frontend Dev",
   bio: "Just a 22yo living on the internet. Suka kopi gula aren, ngetik kode di React, dan overthinking di jam 3 pagi.",
   image: "https://picsum.photos/seed/alex/400/400",
   skills: ["React", "UI/UX", "Memes", "Vibe Curation", "TypeScript"],
   socials: {
-    instagram: "@portorin.id",
+    instagram: "@VibeHub.id",
     twitter: "@alex_codes",
     linkedin: "in/alexkai"
   },
-  philosophy: "Portorin dibuat karena aku capek sama internet yang terlalu serius. Kita butuh space buat napas, ketawa, dan belajar hal random tanpa pressure."
+  philosophy: "VibeHub dibuat karena aku capek sama internet yang terlalu serius. Kita butuh space buat napas, ketawa, dan belajar hal random tanpa pressure."
 };
 
 export const contributors: Contributor[] = [
