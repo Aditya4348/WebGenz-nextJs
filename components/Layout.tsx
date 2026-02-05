@@ -109,6 +109,7 @@ const Navbar: React.FC = () => {
     { path: "/menfess", label: "Menfess" },
     { path: "/creator", label: "Creator" },
     { path: "/contributor", label: "Join Squad" },
+    { path: "/contact", label: "Contact" },
   ];
 
   return (
