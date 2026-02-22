@@ -78,7 +78,7 @@ const Register: React.FC = () => {
         <div className="flex items-start gap-3 ml-1">
             <input type="checkbox" id="terms" required className="mt-1 w-4 h-4 rounded border-gray-300 text-black focus:ring-black" />
             <label htmlFor="terms" className="text-sm text-gray-500 font-medium">
-                Gue setuju sama <a href="#" className="text-black underline font-bold">Rules & Terms</a> yang berlaku. (Janji gak toxic).
+                Gue setuju sama <Link href="/terms" className="text-black underline font-bold">Rules & Terms</Link> yang berlaku. (Janji gak toxic).
             </label>
         </div>
 
