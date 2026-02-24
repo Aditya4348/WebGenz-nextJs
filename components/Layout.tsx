@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../Context/AuthContext";
 import Image from "next/image";
+import Avatar from "./userAvatar";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ const Navbar: React.FC = () => {
   const [isMobileAppsOpen, setIsMobileAppsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const { user, logout } = useAuth();
+  const { user, logoutMutate, } = useAuth();
   const profileRef = useRef<HTMLDivElement>(null);
 
   // Hide Navbar on Auth pages for cleaner look
@@ -218,7 +219,7 @@ const Navbar: React.FC = () => {
               Login <LogIn size={16} />
             </Link>
           ) : (
-            <ProfileDropdown user={user} logout={logout} ref={profileRef} />
+            <ProfileDropdown user={user} ref={profileRef} />
           )}
         </div>
 
@@ -320,7 +321,7 @@ const Navbar: React.FC = () => {
               </Link>
             ) : (
               <button
-                onClick={logout}
+                onClick={() => logoutMutate()}
                 className="p-4 rounded-2xl text-center font-bold text-lg bg-red-50 text-red-500 mt-2 flex items-center justify-center gap-2"
               >
                 Logout <LogOut size={18} />
@@ -335,8 +336,9 @@ const Navbar: React.FC = () => {
 
 const ProfileDropdown = forwardRef<
   HTMLDivElement,
-  { user: any; logout: () => void }
->(({ user, logout }, ref) => {
+  { user: any}
+>(({ user }, ref) => {
+  const { logoutMutate } = useAuth();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   useEffect(() => {
@@ -359,11 +361,7 @@ const ProfileDropdown = forwardRef<
         onClick={() => setIsProfileOpen(!isProfileOpen)}
         className="flex items-center gap-3 bg-white pl-2 pr-4 py-1.5 rounded-full border border-gray-200 hover:border-black transition-all shadow-sm"
       >
-        <img
-          src={user.avatar}
-          alt="Profile"
-          className="w-8 h-8 rounded-full bg-gray-200"
-        />
+        <Avatar src={user?.avatar} size={32} isCircle />
         <span className="font-bold text-sm max-w-[100px] truncate">
           {user.name}
         </span>
@@ -392,7 +390,7 @@ const ProfileDropdown = forwardRef<
               <User size={16} /> Kartu Tanda Gen Z
             </Link>
             <button
-              onClick={logout}
+              onClick={() => logoutMutate()}
               className="flex items-center gap-3 p-3 rounded-2xl hover:bg-red-50 hover:text-red-500 transition-colors text-left w-full font-bold text-sm text-red-400"
             >
               <LogOut size={16} /> Cabut Dulu (Logout)

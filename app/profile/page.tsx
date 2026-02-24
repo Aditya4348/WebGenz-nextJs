@@ -21,10 +21,12 @@ import {
   Eye,
   User,
   Ghost,
+  LogOut,
 } from "lucide-react";
+import UserAvatar from "@/components/userAvatar";
 
 const UserProfile: React.FC = () => {
-  const { user, logout, updateUser } = useAuth();
+  const { user, isLoading, logoutMutate, isLoggingOut } = useAuth();
   const router = useRouter();
 
   // Edit State
@@ -98,7 +100,12 @@ const UserProfile: React.FC = () => {
     }
 
     setIsCreating(false);
-    setPostForm({ title: "", category: "Curhat Gen Z", content: "", isAnonymous: false });
+    setPostForm({
+      title: "",
+      category: "Curhat Gen Z",
+      content: "",
+      isAnonymous: false,
+    });
     setIsCustomCategory(false);
   };
 
@@ -138,13 +145,13 @@ const UserProfile: React.FC = () => {
     );
   }
 
-  const handleSave = () => {
-    updateUser({
-      name: editName,
-      quote: editQuote,
-    });
-    setIsEditing(false);
-  };
+  // const handleSave = () => {
+  //   updateUser({
+  //     name: editName,
+  //     quote: editQuote,
+  //   });
+  //   setIsEditing(false);
+  // };
 
   const handleCancel = () => {
     setEditName(user.name);
@@ -161,6 +168,7 @@ const UserProfile: React.FC = () => {
     "Chaos Coordinator",
   ];
   const userVibe = vibes[user.name.length % vibes.length];
+  // console.log(userVibe);
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-start py-12 px-4">
@@ -205,7 +213,7 @@ const UserProfile: React.FC = () => {
             ) : (
               <div className="flex gap-2 animate-in fade-in slide-in-from-bottom-2">
                 <button
-                  onClick={handleSave}
+                  // onClick={handleSave}
                   className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-full font-bold text-sm hover:bg-green-600 transition-colors"
                 >
                   <Save size={14} /> Simpan
@@ -246,11 +254,7 @@ const UserProfile: React.FC = () => {
               {/* Photo & Main Info */}
               <div className="flex gap-6 items-center mb-6 relative z-10">
                 <div className="relative">
-                  <img
-                    src={user.avatar}
-                    alt="User"
-                    className="w-24 h-24 rounded-2xl border-4 border-black object-cover bg-gray-100"
-                  />
+                  <UserAvatar src={user?.avatar} size={96} />
                   <div className="absolute -bottom-2 -right-2 bg-gen-mint border-2 border-black rounded-full p-1.5">
                     <ShieldCheck size={14} className="text-black" />
                   </div>
@@ -301,7 +305,7 @@ const UserProfile: React.FC = () => {
                   <p className="text-gray-400 font-bold mb-1 uppercase text-[10px]">
                     ID Number
                   </p>
-                  <p className="font-mono font-bold">{user.id.toUpperCase()}</p>
+                  <p className="font-mono font-bold">{user.id}</p>
                 </div>
                 <div>
                   <p className="text-gray-400 font-bold mb-1 uppercase text-[10px]">
@@ -605,8 +609,12 @@ const UserProfile: React.FC = () => {
                         <User size={20} />
                       </div>
                       <div>
-                        <span className="block font-bold text-sm">Gunakan Nama Asli</span>
-                        <span className="block text-[10px] opacity-70">Posting sebagai {user.name}</span>
+                        <span className="block font-bold text-sm">
+                          Gunakan Nama Asli
+                        </span>
+                        <span className="block text-[10px] opacity-70">
+                          Posting sebagai {user.name}
+                        </span>
                       </div>
                     </button>
 
@@ -629,8 +637,12 @@ const UserProfile: React.FC = () => {
                         <Ghost size={20} />
                       </div>
                       <div>
-                        <span className="block font-bold text-sm">Mode Anonim</span>
-                        <span className="block text-[10px] opacity-70">Identitas disembunyikan</span>
+                        <span className="block font-bold text-sm">
+                          Mode Anonim
+                        </span>
+                        <span className="block text-[10px] opacity-70">
+                          Identitas disembunyikan
+                        </span>
                       </div>
                     </button>
                   </div>
@@ -657,12 +669,18 @@ const UserProfile: React.FC = () => {
         </div>
       )}
 
-      <div className="mt-12 pt-8 border-t border-gray-200 w-full max-w-lg text-center">
+      <div className="mt-12 pt-8 border-t border-gray-200 w-full max-w-lg">
         <button
-          onClick={logout}
-          className="text-red-500 font-bold hover:bg-red-50 px-6 py-2 rounded-full transition-colors text-sm"
+          onClick={() => logoutMutate()}
+          disabled={isLoggingOut}
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl 
+               text-sm font-semibold text-red-600 
+               bg-red-50 hover:bg-red-100 
+               transition-all duration-200
+               disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Log Out dari Sini
+          <LogOut size={16} />
+          {isLoggingOut ? "Logging out..." : "Log Out dari Sini"}
         </button>
       </div>
     </div>
