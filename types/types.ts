@@ -4,6 +4,13 @@ export interface credentials {
   password: string;
 }
 
+export interface regisCredentials {
+  email: string;
+  password: string;
+  name: string;
+  isAcceptedTerms: boolean;
+}
+
 
 export enum Category {
   CURHAT = 'Curhat Gen Z',

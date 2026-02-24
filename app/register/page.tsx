@@ -9,15 +9,14 @@ import { useAuth } from '@/Context/AuthContext';
 const Register: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const [password, setPassword] = useState('');
+  const [isAcceptedTerms, setIsAcceptedTerms] = useState(false);
+  const { registerMutate, isRegistering } = useAuth();
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setTimeout(() => {
-      login(email); // Auto login new user
-      setLoading(false);
+      registerMutate({ name, email, password, isAcceptedTerms }); // Auto login new user
     }, 1500);
   };
 
@@ -68,6 +67,8 @@ const Register: React.FC = () => {
                 <input 
                     type="password" 
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Minimal 8 karakter ya"
                     className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-12 py-4 font-bold focus:outline-none focus:border-black focus:bg-white transition-all placeholder:text-gray-300"
                 />
@@ -76,7 +77,7 @@ const Register: React.FC = () => {
 
         {/* Checkbox */}
         <div className="flex items-start gap-3 ml-1">
-            <input type="checkbox" id="terms" required className="mt-1 w-4 h-4 rounded border-gray-300 text-black focus:ring-black" />
+            <input type="checkbox" checked={isAcceptedTerms} onChange={(e) => setIsAcceptedTerms(e.target.checked)} id="terms" required className="mt-1 w-4 h-4 rounded border-gray-300 text-black focus:ring-black" />
             <label htmlFor="terms" className="text-sm text-gray-500 font-medium">
                 Gue setuju sama <Link href="/terms" className="text-black underline font-bold">Rules & Terms</Link> yang berlaku. (Janji gak toxic).
             </label>
@@ -85,11 +86,11 @@ const Register: React.FC = () => {
         {/* Action Button */}
         <button 
             type="submit" 
-            disabled={loading}
+            disabled={isRegistering}
             className="w-full bg-gen-yellow text-black border-2 border-black py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_black] hover:shadow-none translate-y-0 hover:translate-y-1"
         >
-            {loading ? 'Sabar...' : 'Daftar Sekarang'} 
-            {!loading && <Sparkles size={20} className="fill-black" />}
+            {isRegistering ? 'Sabar...' : 'Daftar Sekarang'} 
+            {!isRegistering && <Sparkles size={20} className="fill-black" />}
         </button>
 
         <div className="text-center pt-4">

@@ -1,7 +1,7 @@
  "use client";
 
-import { loginUser } from '@/service/auth';
-import { credentials } from '@/types/types';
+import { loginUser, registerUser } from '@/service/auth';
+import { credentials, regisCredentials } from '@/types/types';
 import { UseMutateFunction, useMutation } from '@tanstack/react-query';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import toast from 'react-hot-toast';
@@ -21,9 +21,13 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   loginMutate: UseMutateFunction<void, Error, credentials, unknown>;
-  isLoggingIn: boolean;
+  registerMutate: UseMutateFunction<void, Error, regisCredentials, unknown>;
   logout: () => void;
   updateUser: (data: Partial<User>) => void;
+
+  // Logic Untuk Loading
+  isRegistering: boolean;
+  isLoggingIn: boolean;
   isAuthenticated: boolean;
 }
 
@@ -41,6 +45,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     },
     onError: (error: any) => {
     const errorMessage = error.response?.data?.message || "Terjadi kesalahan pada server";
+    
+    toast.error(errorMessage);
+    }
+  })
+
+  const { mutate: registerMutate, isPending: isRegistering } = useMutation({
+    mutationFn: registerUser,
+    onSuccess: (data) => {
+      toast.success('Register berhasil!',)
+    },
+    onError: (error: any) => {
+      const errorMessage = error.response?.data?.message || "Terjadi kesalahan pada server";
     
     toast.error(errorMessage);
     }
@@ -78,7 +94,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginMutate, isLoggingIn, logout, updateUser, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loginMutate, registerMutate, isRegistering, isLoggingIn, logout, updateUser, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );
