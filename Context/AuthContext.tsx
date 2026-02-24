@@ -1,6 +1,10 @@
  "use client";
 
+import { loginUser } from '@/service/auth';
+import { credentials } from '@/types/types';
+import { UseMutateFunction, useMutation } from '@tanstack/react-query';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 // Asumsikan Anda memiliki tipe User di sini atau diimpor dari file lain
 export interface User {
@@ -16,7 +20,8 @@ export interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string) => void;
+  loginMutate: UseMutateFunction<void, Error, credentials, unknown>;
+  isLoggingIn: boolean;
   logout: () => void;
   updateUser: (data: Partial<User>) => void;
   isAuthenticated: boolean;
@@ -28,30 +33,36 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
 
   // Check localStorage on mount to persist login
-  useEffect(() => {
-    const storedUser = localStorage.getItem('VibeHub_user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+
+  const { mutate: loginMutate, isPending: isLoggingIn} = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      toast.success('Login berhasil!',)
+    },
+    onError: (error: any) => {
+    const errorMessage = error.response?.data?.message || "Terjadi kesalahan pada server";
+    
+    toast.error(errorMessage);
     }
-  }, []);
+  })
 
-  const login = (email: string) => {
-    const mockUser: User = {
-      id: 'user_123',
-      name: email === 'admin@VibeHub.com' ? 'Mimin Kece' : 'VibeHub Squad',
-      email: email,
-      avatar: email === 'admin@VibeHub.com' 
-        ? 'https://picsum.photos/seed/admin/200/200' 
-        : `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-      role: email === 'admin@VibeHub.com' ? 'admin' : 'user',
-      quote: "Hidup itu random, yang penting outfit cakep.",
-      xp: 0,
-      badges: [],
-    };
+  // const login = (email: string) => {
+  //   const mockUser: User = {
+  //     id: 'user_123',
+  //     name: email === 'admin@VibeHub.com' ? 'Mimin Kece' : 'VibeHub Squad',
+  //     email: email,
+  //     avatar: email === 'admin@VibeHub.com' 
+  //       ? 'https://picsum.photos/seed/admin/200/200' 
+  //       : `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
+  //     role: email === 'admin@VibeHub.com' ? 'admin' : 'user',
+  //     quote: "Hidup itu random, yang penting outfit cakep.",
+  //     xp: 0,
+  //     badges: [],
+  //   };
 
-    setUser(mockUser);
-    localStorage.setItem('VibeHub_user', JSON.stringify(mockUser));
-  };
+  //   setUser(mockUser);
+  //   localStorage.setItem('VibeHub_user', JSON.stringify(mockUser));
+  // };
 
   const logout = () => {
     setUser(null);
@@ -67,7 +78,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateUser, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loginMutate, isLoggingIn, logout, updateUser, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );

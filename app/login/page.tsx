@@ -9,18 +9,21 @@ import { useAuth } from '@/Context/AuthContext';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { login } = useAuth();
+  const { loginMutate, isLoggingIn } = useAuth();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+
     
     setTimeout(() => {
-      login(email); // Call global login
+      loginMutate({ email, password }); // Call global login
       setLoading(false);
-      router.push('/');
+      router.push('/login');
     }, 1000);
   };
 
@@ -77,6 +80,8 @@ const Login: React.FC = () => {
                 <input 
                     type="password" 
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Rahasia negara..."
                     className="w-full bg-gray-50 border-2 border-gray-200 rounded-2xl px-12 py-4 font-bold focus:outline-none focus:border-black focus:bg-white transition-all placeholder:text-gray-300"
                 />

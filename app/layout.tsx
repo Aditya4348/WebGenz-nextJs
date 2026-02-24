@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Layout } from "@/components/Layout";
 import { AuthProvider } from "@/Context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "react-hot-toast";
+import TanstackProvider from "@/components/providers/TanstackProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +31,21 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="./SecondLogoVH.png" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        ></link>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning={true}>
-         <AuthProvider>
-          <Layout>
-            {children}
-          </Layout>
-        </AuthProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning={true}
+      >
+        <TanstackProvider>
+          <AuthProvider>
+            <Toaster position="top-center" reverseOrder={false}/>
+            <Layout>{children}</Layout>
+          </AuthProvider>
+        </TanstackProvider>
       </body>
     </html>
   );

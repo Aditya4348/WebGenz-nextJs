@@ -1,4 +1,10 @@
 
+export interface credentials {
+  email: string;
+  password: string;
+}
+
+
 export enum Category {
   CURHAT = 'Curhat Gen Z',
   DIGITAL_LIFE = 'Digital Life',
